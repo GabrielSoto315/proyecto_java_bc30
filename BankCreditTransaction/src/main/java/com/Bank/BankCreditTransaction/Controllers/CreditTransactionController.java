@@ -1,7 +1,10 @@
 package com.Bank.BankCreditTransaction.Controllers;
 
-import com.Bank.BankCreditTransaction.Models.CreditTransaction;
+import com.Bank.BankCreditTransaction.Models.Documents.CreditTransaction;
+import com.Bank.BankCreditTransaction.Models.Service.Result;
 import com.Bank.BankCreditTransaction.Repository.ICreditTransactionRepository;
+import com.Bank.BankCreditTransaction.Service.CreditService;
+import com.Bank.BankCreditTransaction.Service.CreditTransactionService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Map;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/CreditTransaction/")
@@ -19,6 +24,9 @@ public class CreditTransactionController {
 
     @Autowired
     private ICreditTransactionRepository oCreditTransactionRep;
+    @Autowired
+    private CreditTransactionService oCreditTransactionSer;
+
 
     private static final Logger log = LoggerFactory.getLogger(CreditTransactionController.class);
 
@@ -43,7 +51,7 @@ public class CreditTransactionController {
     }
 
     /**
-     * Guardar nuevo cliente empresa
+     * Guardar nueva transaccion de credito
      * @param oCreditTransaction
      * @return
      */
@@ -71,5 +79,34 @@ public class CreditTransactionController {
     @DeleteMapping("/{id}")
     public void DeletebyId(@PathVariable("id") String id){
         oCreditTransactionRep.deleteById(id);
+    }
+
+    /**
+     * Guardar transaccion de pago de credito de cuenta o tarjeta
+     * @param oCreditTransaction
+     * @return
+     */
+    @PostMapping("RegisterCreditPay/")
+    public Mono<Result> RegisterCreditPay(@RequestBody CreditTransaction oCreditTransaction){
+        return oCreditTransactionSer.RegisterCreditPay(oCreditTransaction);
+    }
+
+    /**
+     * Guardar transaccion de cargo en tarjeta de credito
+     * @param oCreditTransaction
+     * @return
+     */
+    @PostMapping("RegisterCreditCharge/")
+    public Mono<Result> SaveCreditCardCharge(@RequestBody CreditTransaction oCreditTransaction){
+         return oCreditTransactionSer.RegisterCreditCharge(oCreditTransaction);
+    }
+
+    /**
+     * Lista transaccion en tarjeta de credito o cuenta
+     * @param oCreditTransaction
+     * @return
+     */
+    public Mono<Result> RegisterCreditPay(@RequestBody CreditTransaction oCreditTransaction){
+        return oCreditTransactionSer.RegisterCreditPay(oCreditTransaction);
     }
 }

@@ -1,6 +1,6 @@
 package com.Bank.BankCreditTransaction.Repository;
 
-import com.Bank.BankCreditTransaction.Models.CreditTransaction;
+import com.Bank.BankCreditTransaction.Models.Documents.CreditTransaction;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 

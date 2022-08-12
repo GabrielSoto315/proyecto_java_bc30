@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(value = "ClientCompany")
