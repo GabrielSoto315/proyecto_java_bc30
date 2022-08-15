@@ -100,13 +100,5 @@ public class CreditTransactionController {
     public Mono<Result> SaveCreditCardCharge(@RequestBody CreditTransaction oCreditTransaction){
          return oCreditTransactionSer.RegisterCreditCharge(oCreditTransaction);
     }
-
-    /**
-     * Lista transaccion en tarjeta de credito o cuenta
-     * @param oCreditTransaction
-     * @return
-     */
-//    public Mono<Result> RegisterCreditPay(@RequestBody CreditTransaction oCreditTransaction){
-//        return oCreditTransactionSer.RegisterCreditPay(oCreditTransaction);
-//    }
+    
 }
