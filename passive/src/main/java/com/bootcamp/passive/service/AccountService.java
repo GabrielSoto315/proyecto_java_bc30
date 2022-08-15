@@ -44,13 +44,12 @@ public class AccountService implements IAccountService{
 
     @Override
     public Mono<Account> update(String id, Account account) {
-        return accountRepository.findById(id).flatMap(account1 -> {
-            account.setActive(true);
-            account.setIdAccountNumber(id);
-            account.setLastTransaction(new Date());
-            account.setBalance(account.getBalance());
-            account.setNumberTransactions(account.getNumberTransactions());
-            return accountRepository.save(account);
+        return accountRepository.findById(id).flatMap(x -> {
+            x.setActive(true);
+            x.setLastTransaction(new Date());
+            x.setBalance(account.getBalance());
+            x.setNumberTransactions(account.getNumberTransactions());
+            return accountRepository.save(x);
         }).switchIfEmpty(Mono.empty());
     }
 

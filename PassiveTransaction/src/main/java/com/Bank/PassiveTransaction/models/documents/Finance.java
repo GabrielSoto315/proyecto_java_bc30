@@ -7,18 +7,19 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection="finance")
+@Document(collection="Finance")
 public class Finance {
     @Id
     private String id;
     private Date date;
-    private double mount;
+    private BigDecimal amount;
     private String accountNumber;
     private String customer;
     private String type;
