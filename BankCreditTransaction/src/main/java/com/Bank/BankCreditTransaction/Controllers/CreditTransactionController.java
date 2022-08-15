@@ -106,7 +106,7 @@ public class CreditTransactionController {
      * @param oCreditTransaction
      * @return
      */
-    public Mono<Result> RegisterCreditPay(@RequestBody CreditTransaction oCreditTransaction){
-        return oCreditTransactionSer.RegisterCreditPay(oCreditTransaction);
-    }
+//    public Mono<Result> RegisterCreditPay(@RequestBody CreditTransaction oCreditTransaction){
+//        return oCreditTransactionSer.RegisterCreditPay(oCreditTransaction);
+//    }
 }
